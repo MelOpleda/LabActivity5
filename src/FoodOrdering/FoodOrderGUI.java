@@ -1,8 +1,9 @@
 package FoodOrdering;
 
 import javax.swing.*;
+import java.awt.event.*;
 
-public class FoodOrderGUI extends JFrame {
+public class FoodOrderGUI extends JFrame implements ActionListener {
     private JPanel panel1;
     private JCheckBox cPizza;
     private JRadioButton rbNone;
@@ -25,6 +26,51 @@ public class FoodOrderGUI extends JFrame {
         app3.setDefaultCloseOperation(EXIT_ON_CLOSE);
         app3.setVisible(true);
         app3.setLocationRelativeTo(null);
+
+        app3.btnOrder.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                double total = 0.0;
+
+                if(app3.cPizza.isSelected()){
+                    total+=100;
+                }
+                if(app3.cBurger.isSelected()){
+                    total+=80;
+                }
+                if(app3.cFries.isSelected()){
+                    total+=65;
+                }
+                if(app3.cSoftDrinks.isSelected()){
+                    total+=55;
+                }
+                if(app3.cTea.isSelected()){
+                    total+=50;
+                }
+                if(app3.cSundae.isSelected()){
+                    total+=40;
+                }
+
+                if(app3.rb5.isSelected()){
+                    double discount = 100 - 5;
+                    total*=discount/100;
+                }
+                else if(app3.rb10.isSelected()){
+                    double discount = 100 - 10;
+                    total*=discount/100;
+                }
+                else if(app3.rb15.isSelected()){
+                    double discount = 100 - 15;
+                    total*=discount/100;
+                }
+                    JOptionPane.showMessageDialog(null,String.format("The total price is Php %.2f", total));
+            }
+        });
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
     }
 }
