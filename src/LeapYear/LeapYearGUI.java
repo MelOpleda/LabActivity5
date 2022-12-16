@@ -21,12 +21,9 @@ public class LeapYearGUI extends JFrame implements ActionListener {
         app.btnCheckYear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int year;
-                try {
-                    year = Integer.parseInt(app.tfYear.getText());
-                } catch (NumberFormatException numberFormatException) {
-                    return;
-                }
+
+                int year = Integer.parseInt(app.tfYear.getText());
+
                 if(((year %4 == 0)&&(year %100 != 0))||year %400 == 0)
                     System.out.println("Leap Year");
                 else
