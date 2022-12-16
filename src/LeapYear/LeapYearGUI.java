@@ -22,12 +22,16 @@ public class LeapYearGUI extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                int year = Integer.parseInt(app.tfYear.getText());
-
+                int year;
+                try {
+                    year = Integer.parseInt(app.tfYear.getText());
+                } catch (NumberFormatException numberFormatException) {
+                    return;
+                }
                 if(((year %4 == 0)&&(year %100 != 0))||year %400 == 0)
-                    System.out.println("Leap Year");
+                    JOptionPane.showMessageDialog(null, "Leap year");
                 else
-                    System.out.println("Not a Leap Year");
+                    JOptionPane.showMessageDialog(null, "Not a leap year");
             }
         });
     }
