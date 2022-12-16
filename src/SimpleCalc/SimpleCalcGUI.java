@@ -35,37 +35,32 @@ public class SimpleCalcGUI extends JFrame implements ActionListener {
         app2.btnCompute.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int num1, num2, result;
 
+                int num1, num2, result = 0;
                 Object item = app2.cbOperations.getSelectedItem();
-
-                if("+".equals(item)){
+                try {
                     num1 = Integer.parseInt(app2.tfNumber1.getText());
                     num2 = Integer.parseInt(app2.tfNumber2.getText());
+                } catch (NumberFormatException numberFormatException) {
+                    return;
+                }
+                if("+".equals(item)){
                     result = num1 + num2;
-                    app2.lblResult.setText(String.valueOf(result));
                 }
                 else if ("-".equals(item)){
-                    num1 = Integer.parseInt(app2.tfNumber1.getText());
-                    num2 = Integer.parseInt(app2.tfNumber2.getText());
                     result = num1 - num2;
-                    app2.lblResult.setText(String.valueOf(result));
                 }
                 else if ("*".equals(item)){
-                    num1 = Integer.parseInt(app2.tfNumber1.getText());
-                    num2 = Integer.parseInt(app2.tfNumber2.getText());
                     result = num1 * num2;
-                    app2.lblResult.setText(String.valueOf(result));
                 }
                 else if ("/".equals(item)){
-                    num1 = Integer.parseInt(app2.tfNumber1.getText());
-                    num2 = Integer.parseInt(app2.tfNumber2.getText());
                     result = num1 / num2;
-                    app2.lblResult.setText(String.valueOf(result));
                 }
+                app2.lblResult.setText(String.valueOf(result));
             }
         });
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
